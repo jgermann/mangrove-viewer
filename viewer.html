@@ -102,13 +102,19 @@
       $("#menu_clipping").next().show();
       viewer.toggleSidebar();
 
-        // Force closed (works across Potree builds)
-  if (viewer.setSidebarVisible) {
-    viewer.setSidebarVisible(false);
-  } else {
-    const sc = document.getElementById('potree_sidebar_container');
-    if (sc) sc.style.display = 'none';
-  }
+
+  // Force the sidebar closed and reclaim space:
+  const sc = document.getElementById('potree_sidebar_container');
+  const ra = document.getElementById('potree_render_area');
+  const mt = document.getElementById('potree_menu_toggle');
+  const tb = document.getElementById('potree_toolbar_container');
+
+  if (sc) sc.style.display = 'none';    // hide the sidebar
+  if (ra) ra.style.left = '0';          // give the render area full width
+  if (mt) mt.style.display = 'none';    // hide hamburger
+  if (tb) tb.style.display = 'none';    // hide top toolbar (optional)
+
+
     });
 
     // Helfer
