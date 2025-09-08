@@ -62,9 +62,9 @@
       </div>
 
       <div id="hwrap">
-        <label for="hmin">Min über Ground</label>
+        <label for="hmin">Min over Ground</label>
         <input id="hmin" type="number" step="0.1" value="0.0" style="width:80px" oninput="applyElev()">
-        <label for="hmax">Max über Ground</label>
+        <label for="hmax">Max over Ground</label>
         <input id="hmax" type="number" step="0.1" value="5.0" style="width:80px" oninput="applyElev()">
       </div>
 
@@ -109,7 +109,7 @@
   const mt = document.getElementById('potree_menu_toggle');
   const tb = document.getElementById('potree_toolbar_container');
 
-  if (sc) sc.style.display = 'none';    // hide the sidebar
+  //if (sc) sc.style.display = 'none';    // hide the sidebar
   if (ra) ra.style.left = '0';          // give the render area full width
   if (mt) mt.style.display = 'none';    // hide hamburger
   if (tb) tb.style.display = 'none';    // hide top toolbar (optional)
@@ -135,7 +135,13 @@
     Potree.loadPointCloud(METADATA_URL, "Mangroves").then(async e => {
       window.pc = e.pointcloud;
       viewer.scene.addPointCloud(pc);
-      viewer.fitToScreen();
+            viewer.fitToScreen();
+
+
+
+
+
+
 
       // Klassen sichtbar machen
       const cls = pc.material.classification || {};
