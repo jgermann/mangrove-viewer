@@ -137,10 +137,20 @@
       viewer.scene.addPointCloud(pc);
             viewer.fitToScreen();
 
+           
 
-
-
-
+// Prefer RGB as the default
+(function setDefaultRGB(){
+  const useEnums = ('pointColorType' in pc.material) && Potree.PointColorType;
+  if (useEnums) {
+    pc.material.pointColorType = Potree.PointColorType.RGB;
+  } else {
+    pc.material.activeAttributeName = 'rgb';
+  }
+  pc.material.needsUpdate = true;
+  if (viewer.render) viewer.render();
+})();
+setColor('rgb');
 
 
       // Klassen sichtbar machen
@@ -252,6 +262,8 @@
       pc.material.needsUpdate = true;
       rerender();
     }
+
+
   </script>
 </body>
 </html>
