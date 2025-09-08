@@ -101,6 +101,14 @@
       $("#menu_tools").next().show();
       $("#menu_clipping").next().show();
       viewer.toggleSidebar();
+
+        // Force closed (works across Potree builds)
+  if (viewer.setSidebarVisible) {
+    viewer.setSidebarVisible(false);
+  } else {
+    const sc = document.getElementById('potree_sidebar_container');
+    if (sc) sc.style.display = 'none';
+  }
     });
 
     // Helfer
